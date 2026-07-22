@@ -1,70 +1,199 @@
-# CareerAI — From Resume to Job Offer
+# CareerAI 🚀
+### AI-Powered Career Coach for Resume Analysis, ATS Optimization & Interview Preparation
 
-Your personal AI Career Coach. Upload a resume, paste a job description, and get an end-to-end coaching report: ATS score, skill-gap analysis, an optimized resume, a personalized day-by-day roadmap, an interview question bank, an AI-evaluated mock interview, and a readiness dashboard — all in one place, no login required.
+CareerAI is an AI-powered career coaching platform that transforms a resume and job description into a complete job preparation plan. It analyzes resume quality, measures ATS compatibility, identifies skill gaps, optimizes resume content, generates a personalized learning roadmap, prepares interview questions, and evaluates mock interview responses using Google's Gemini AI.
 
-![Hero](screenshots/01-home.png)
+Designed as an end-to-end career assistant, CareerAI helps bridge the gap between **"I found a job posting"** and **"I'm ready for the interview."**
 
-## Features
+---
 
-Ten AI modules working together:
+## 📸 Preview
 
-1. **Resume Analyzer** — parses your PDF resume, extracts skills, summary, strengths and weak areas.
-2. **JD Analyzer** — pulls required/preferred skills, technologies, keywords and interview topics from any job description.
-3. **ATS Engine** — match score, keyword score, skill score, plus matched vs missing lists.
-4. **Skill Gap AI** — for each missing skill: why it matters, industry usage, importance, learning path, resume bullet example, interview relevance.
-5. **Resume Optimizer** — ATS suggestions, keyword injections, better bullets (before/after), profile enhancements.
-6. **Personalized Roadmap** — 1 week to 3 months, with weekly themes, mini-projects, and day-by-day tasks for week 1.
-7. **Interview Prep** — technical, HR, resume-based, project-based and JD-based questions tailored to your role.
-8. **AI Mock Interview** — type your answers; Gemini evaluates technical accuracy, communication, completeness, gives feedback and an ideal answer.
-9. **Readiness Dashboard** — ATS, skill-gap, resume-quality, interview-readiness and overall scores with a summary.
-10. **Curated Resources** — real free courses, docs, YouTube channels, practice platforms and project ideas per missing skill.
+### Home
 
-![Features](screenshots/02-mid.png)
+![Home](screenshots/01-home.png)
 
-## How it works
+### AI Analysis Dashboard
 
-1. **Upload & describe** — drop your resume PDF and paste the job description.
-2. **AI analyzes** — a single Gemini call (via the Lovable AI Gateway) returns the full structured coaching report.
-3. **You execute** — follow the daily plan, rehearse in the mock interview, ship the offer.
+![Dashboard](screenshots/02-mid.png)
 
-![How it works](screenshots/03-bottom.png)
+### Interview & Roadmap
 
-## Tech Stack
+![Interview](screenshots/03-bottom.png)
 
-- **Framework** — TanStack Start (React 19, Vite 7, SSR-ready)
-- **Styling** — Tailwind CSS v4 with a custom dark, midnight + teal/magenta design system
-- **AI** — `google/gemini-3-flash-preview` via the Lovable AI Gateway (`ai` SDK)
-- **PDF parsing** — `pdfjs-dist`, done client-side in the browser
-- **Type safety** — TypeScript strict, Zod input validation on every server function
+---
 
-## Project Structure
+# ✨ Features
 
+CareerAI combines multiple AI-powered modules into a single workflow.
+
+- 📄 **Resume Analyzer**
+  - Extracts skills, experience, education, strengths, and improvement areas from PDF resumes.
+
+- 🎯 **Job Description Analyzer**
+  - Identifies required skills, technologies, keywords, responsibilities, and interview topics.
+
+- 📈 **ATS Compatibility Engine**
+  - Calculates ATS score, keyword coverage, skill matching, and missing requirements.
+
+- 🧠 **Skill Gap Analysis**
+  - Explains why each missing skill matters, where it is used, how to learn it, and how to present it on a resume.
+
+- ✍️ **Resume Optimizer**
+  - Generates ATS-friendly improvements, stronger bullet points, keyword recommendations, and profile enhancements.
+
+- 🗓 **Personalized Learning Roadmap**
+  - Creates structured learning plans ranging from one week to three months.
+
+- 💼 **Interview Preparation**
+  - Generates technical, HR, resume-based, project-based, and role-specific interview questions.
+
+- 🎤 **AI Mock Interview**
+  - Evaluates candidate responses for technical accuracy, communication quality, completeness, and provides ideal answers.
+
+- 📊 **Career Readiness Dashboard**
+  - Summarizes ATS score, interview readiness, resume quality, and overall preparation.
+
+- 📚 **Learning Resources**
+  - Recommends curated documentation, free courses, YouTube channels, and project ideas.
+
+---
+
+# 🏗 Architecture
+
+```text
+                Resume PDF
+                     +
+            Job Description
+                     │
+                     ▼
+         Client-side PDF Extraction
+                     │
+                     ▼
+              Gemini AI Analysis
+                     │
+                     ▼
+        Structured JSON Response
+                     │
+     ┌───────────────┼────────────────┐
+     │               │                │
+ ATS Analysis   Skill Gap AI   Resume Optimizer
+     │               │                │
+     ├───────────────┼────────────────┤
+     ▼               ▼                ▼
+ Learning Roadmap   Interview Prep   Mock Interview
+                     │
+                     ▼
+          Career Readiness Dashboard
 ```
-src/
-  routes/
-    __root.tsx          # app shell, SEO metadata, providers
-    index.tsx           # the entire CareerAI experience
-  lib/
-    ai.functions.ts     # analyzeCareer + evaluateAnswer server functions
-    ai-gateway.server.ts# Lovable AI Gateway provider
-    pdf-extract.ts      # client-side PDF text extraction
-  styles.css            # design tokens (dark, teal + magenta)
+
+---
+
+# ⚙️ Tech Stack
+
+| Category | Technology |
+|-----------|------------|
+| Frontend | React 19, TanStack Start, Vite 7 |
+| Language | TypeScript |
+| Styling | Tailwind CSS v4 |
+| AI | Google Gemini 3 Flash |
+| Validation | Zod |
+| PDF Processing | pdfjs-dist |
+| Runtime | Bun |
+| Deployment | Lovable Cloud |
+
+---
+
+# 🛠 Engineering Highlights
+
+- Client-side PDF parsing using **pdfjs-dist**
+- Type-safe architecture with **TypeScript**
+- Structured AI responses validated using **Zod**
+- AI orchestration through server functions
+- Modular component architecture
+- Responsive UI with modern design system
+- Stateless architecture without database dependency
+
+---
+
+# 🚀 Getting Started
+
+## Clone the repository
+
+```bash
+git clone https://github.com/Param-Pandya/CareerAi.git
 ```
 
-## Local Development
+```bash
+cd CareerAi
+```
+
+## Install dependencies
 
 ```bash
 bun install
+```
+
+## Run locally
+
+```bash
 bun run dev
 ```
 
-The app runs at `http://localhost:8080`. The `LOVABLE_API_KEY` secret is provisioned automatically by Lovable Cloud — no external accounts needed.
+The application runs on:
 
-## What CareerAI is NOT
+```
+http://localhost:8080
+```
 
-- Not just an ATS checker — it goes from resume to interview readiness.
-- No login, no signup, no payment gateway, no complex database — a single stateless flow driven by AI.
+---
 
-## Credits
+# 📁 Project Structure
 
-Built with [Lovable](https://lovable.dev). Powered by the Lovable AI Gateway.
+```text
+src/
+│
+├── routes/
+│   ├── __root.tsx
+│   └── index.tsx
+│
+├── lib/
+│   ├── ai.functions.ts
+│   ├── ai-gateway.server.ts
+│   └── pdf-extract.ts
+│
+└── styles.css
+```
+
+---
+
+# 🎯 Future Improvements
+
+- Voice-based AI mock interviews
+- Cover letter generation
+- Resume version comparison
+- Authentication & user profiles
+- Interview analytics dashboard
+- Multi-language support
+
+---
+
+# 📌 Project Goals
+
+CareerAI is designed to demonstrate practical applications of Large Language Models in career development by combining document understanding, structured AI outputs, resume optimization, personalized planning, and interview evaluation into a single intelligent workflow.
+
+---
+
+# 👨‍💻 Author
+
+**Param Pandya**
+
+AI/ML Engineer focused on Machine Learning, Generative AI, LLMs, NLP, and Intelligent Software Systems.
+
+GitHub: https://github.com/Param-Pandya
+
+---
+
+# 🙏 Acknowledgements
+
+Built using **React**, **TypeScript**, **TanStack Start**, **Tailwind CSS**, **Google Gemini AI**, and the **Lovable AI Gateway**.
